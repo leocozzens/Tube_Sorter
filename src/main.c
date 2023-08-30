@@ -39,7 +39,7 @@ static void determine_type();
 static bool check_input(char *buffer, int buffSize) {
         if(buffer[0] == 'D' || buffer[0] == 'd') return true;
         if(strncmp(buffer, "help", buffSize) == 0) {
-            printf("find: finds tube\ncompare: compares two tube lists\n");
+            printf("find: finds tube\ncompare: compares two tube lists\ncreate: \n open: \n sort: ");
         }
         return false;
 }
