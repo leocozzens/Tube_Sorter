@@ -4,6 +4,7 @@
 // Local headers
 #include <interpret.h>
 
+#include <stdio.h>
 #define MAX_CMD_SIZE 10
 
 #define STRINGIZE(arg) #arg
@@ -24,6 +25,7 @@ CommandType determine_type(char *buffer) {
     for(CommandType i = 0; i < sizeof(checkList) / sizeof(char*); i++) {
         int itemLen = strlen(checkList[i]);
         if(buffLen < itemLen) continue;
+        if(buffer[itemLen] != '\0' && buffer[itemLen] != ' ') continue;
         str_to_upper(buffer, upperVer, itemLen);
         if(strncmp(upperVer, checkList[i], itemLen) == 0) return i;
     }
