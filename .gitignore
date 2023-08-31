@@ -65,4 +65,4 @@ bin/
 obj/
 
 # Raw headers
-raw_*
+raw_*.h

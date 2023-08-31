@@ -7,7 +7,7 @@
 #include <intro.h>
 #include <handler.h>
 
-// #define INTRO_FILE "raw_assets/tube_intro.txt"
+// #define INTRO_FILE "raw_assets/tube_intro.raw"
 #ifndef INTRO_FILE
     #include <raw_tube_intro.h>
     #define INTRO_RAW raw_assets_tube_intro_raw
