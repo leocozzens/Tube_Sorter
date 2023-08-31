@@ -1,4 +1,5 @@
 CC = gcc
+BINREADER = xxd -i
 EXT = c
 CFLAGS = -Iinclude -g -Wall
 SRC = src
@@ -14,6 +15,7 @@ SUBMITNAME = $(PROJECT_NAME).zip
 zip = zip
 
 all: create_dirs
+# all: raw
 all: $(BIN)
 
 release: CFLAGS = -Iinclude -O2
