@@ -4,7 +4,7 @@
 #include <operations.h>
 
 bool handle_input(char *buffer) {
-    switch(determine_type(buffer)) {
+    switch(interpret_type(buffer)) {
         case FAIL:
             break;
         case DONE:

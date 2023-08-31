@@ -63,3 +63,6 @@ dkms.conf
 # Binaries
 bin/
 obj/
+
+# Raw headers
+raw_*

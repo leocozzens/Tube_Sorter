@@ -8,7 +8,8 @@ typedef enum {
     FAIL = -1,
     COMMAND_LIST
 } CommandType;
+#undef X
 
-CommandType determine_type(char *buffer);
+CommandType interpret_type(char *buffer);
 
 #endif

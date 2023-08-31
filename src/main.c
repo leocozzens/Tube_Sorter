@@ -7,11 +7,12 @@
 #include <intro.h>
 #include <handler.h>
 
-#define INTRO_FILE "raw_assets/tube_intro.txt"
+// #define INTRO_FILE "raw_assets/tube_intro.txt"
 #ifndef INTRO_FILE
-    #include <tube_intro.h>
-    #define INTRO_RAW "tube_intro_txt"
-    #define INTRO_RAW_LEN INTRO_RAW##_len
+    #include <raw_tube_intro.h>
+    #define INTRO_RAW raw_assets_tube_intro_raw
+    #define CAT(x, y) x ## y
+    #define RAW_LEN(raw) CAT(raw, _len)
 #endif
 
 #define BUFF_SIZE 256
@@ -19,7 +20,7 @@
 
 int main(void) {
     #ifndef INTRO_FILE
-        intro_from_mem(stdout, INTRO_RAW, INTRO_RAW_LEN, ADDENDUM);
+        intro_from_mem(stdout, INTRO_RAW, RAW_LEN(INTRO_RAW), ADDENDUM);
     #else
         intro_from_file(stdout, INTRO_FILE, ADDENDUM);
     #endif
