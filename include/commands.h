@@ -4,7 +4,7 @@
 #define NO_ARG "%s"
 #define SINGLE_ARG "%s [FILE]"
 #define TWO_ARG "%s [FILES]..."
-#define THREE_ARG "%s [FILES]... [TUBES]..."
+#define THREE_ARG "%s [FILES]... | [TUBES]..."
 
 #define COMMAND_LIST \
     X(DONE, "Exits the program", NO_ARG) \
