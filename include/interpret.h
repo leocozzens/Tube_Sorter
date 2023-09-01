@@ -5,11 +5,16 @@
 #define X(cmd) cmd,
 
 typedef enum {
-    FAIL = -1,
+    NONE = -1,
     COMMAND_LIST
 } CommandType;
 #undef X
 
-CommandType interpret_type(char *buffer);
+typedef struct {
+    CommandType type;
+    unsigned int offSet;
+} TypeInfo;
+
+TypeInfo interpret_type(char *buffer);
 
 #endif

@@ -3,10 +3,36 @@
 #include <interpret.h>
 #include <operations.h>
 
-bool handle_input(char *buffer) {
-    switch(interpret_type(buffer)) {
-        case FAIL:
+static void fail(CommandType failType) {
+    switch(failType) {
+        case NONE:
             break;
+        case DONE:
+            break;
+        case HELP:
+            break;
+        case FIND:
+            break;
+        case COMPARE:
+            break;
+        case CREATE:
+            break;
+        case OPEN:
+            break;
+        case SORT:
+            break;
+    }
+}
+
+bool handle_input(char *buffer) {
+    TypeInfo inputType = interpret_type(buffer);
+    if(inputType.offSet == 0) {
+        fail(inputType.type);
+        goto END;
+    }
+    switch(inputType.type) {
+        case NONE:
+            goto END;
         case DONE:
             return false;
         case HELP:
@@ -25,5 +51,6 @@ bool handle_input(char *buffer) {
         case SORT:
             break;
     }
+    END:
     return true;
 }
