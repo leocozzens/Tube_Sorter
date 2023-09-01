@@ -2,7 +2,7 @@
 #define INTERPRET_H
 
 #include <commands.h>
-#define X(cmd) cmd,
+#define X(command, desc, usage) command,
 
 typedef enum {
     NONE = -1,

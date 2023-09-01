@@ -3,11 +3,15 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-
+// Local headers
+#include <commands.h>
 #define BUFF_SIZE 256
 
+#define STRINGIZE(arg) #arg
+#define X(command, desc, usage) printf("\n" STRINGIZE(command:) " "desc"\nUSAGE - " usage "\n", STRINGIZE(command));
+
 void operation_print_help(void) {
-    printf("find: finds tube\ncompare: compares two tube lists\ncreate: \nopen: \nsort: \n");
+    COMMAND_LIST;
 }
 
 void operation_find(char *buffer) {    

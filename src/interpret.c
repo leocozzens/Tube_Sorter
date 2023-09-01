@@ -9,10 +9,11 @@
 #define MAX_CMD_SIZE 10
 
 #define STRINGIZE(arg) #arg
-#define X(cmd) STRINGIZE(cmd),  // Alternatively [cmd] = STRINGIZE[cmd], can be used if enum is not ordered from 0-max
+#define X(command, desc, usage) STRINGIZE(command),  // Alternatively [cmd] = STRINGIZE[cmd], can be used if enum is not ordered from 0-max
 static char *checkList[] = {
     COMMAND_LIST
 };
+#undef X
 
 static void str_to_upper(char *in, char *out, int strLen) {
     for(int i = 0; i < strLen; i++) out[i] = toupper(in[i]);
