@@ -8,7 +8,7 @@
 
 #define COMMAND_LIST \
     X(DONE, "Exits the program", NO_ARG) \
-    X(HELP, "Lists available commands with accompanying descriptions", SINGLE_ARG) \
+    X(HELP, "Lists available commands with accompanying descriptions", NO_ARG) \
     X(FIND, "Finds tube", THREE_ARG) \
     X(COMPARE, "Compares multiple tube lists", TWO_ARG) \
     X(CREATE, "Creates new tube list", TWO_ARG) \
