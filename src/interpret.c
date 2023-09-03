@@ -5,7 +5,6 @@
 // Local headers
 #include <interpret.h>
 
-#define CHECK_LAST_OP(__type, __len, __buffer) if(__buffer[__len] == ' ') return false
 #define MAX_CMD_SIZE 10
 
 #define STRINGIZE(arg) #arg
@@ -15,8 +14,20 @@ static char *checkList[] = {
 };
 #undef X
 
+// Static functions
 static void str_to_upper(char *in, char *out, int strLen) {
     for(int i = 0; i < strLen; i++) out[i] = toupper(in[i]);
+}
+
+static bool verify_has_depth(int depth, char *buffer) {
+    unsigned int buffLen = strlen(buffer);
+    unsigned int i = 0;
+    unsigned int args = 0;
+    while(args < depth && i < buffLen) {
+        if(buffer[i++] == ' ') args++;
+    }
+    if(buffer[i] != '\0') return false;
+    return true;
 }
 
 static bool is_valid(CommandType type, char *buffer) {
@@ -25,8 +36,7 @@ static bool is_valid(CommandType type, char *buffer) {
             return false;
         case DONE:
         case HELP:
-            CHECK_LAST_OP(type, strlen(checkList[type]), buffer);
-            break;
+            return verify_has_depth(0, buffer + strlen(checkList[type]));
         case FIND:
             break;
         case COMPARE:
@@ -41,6 +51,7 @@ static bool is_valid(CommandType type, char *buffer) {
     return true;
 }
 
+// Public functions
 TypeInfo interpret_type(char *buffer) {
     unsigned int buffLen = strlen(buffer);
     TypeInfo retInfo = { NONE, 0 };

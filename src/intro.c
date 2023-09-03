@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Public functions
 void intro_from_file(FILE *outStream, char *introFileName, char *addendum) {
     FILE *introFile = fopen(introFileName, "r");
     fseek(introFile, 0, SEEK_END);

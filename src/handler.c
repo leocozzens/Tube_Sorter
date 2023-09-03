@@ -3,6 +3,7 @@
 #include <interpret.h>
 #include <operations.h>
 
+// Static functions
 static void fail(CommandType failType) {
     switch(failType) {
         case NONE:
@@ -24,6 +25,7 @@ static void fail(CommandType failType) {
     }
 }
 
+// Public functions
 bool handle_input(char *buffer) {
     TypeInfo inputType = interpret_type(buffer);
     if(inputType.offSet == 0) {

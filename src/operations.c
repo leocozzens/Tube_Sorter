@@ -10,10 +10,12 @@
 #define STRINGIZE(arg) #arg
 #define X(command, desc, usage) printf("\n" STRINGIZE(command:) " "desc"\nUSAGE - " usage "\n", STRINGIZE(command));
 
+// Public functions
 void operation_print_help(void) {
     COMMAND_LIST;
 }
 
+#undef X
 void operation_find(char *buffer) {    
     FILE *inFile = fopen("tubenumbers_box3replated.txt", "r");
     char inBuffer[BUFF_SIZE];
