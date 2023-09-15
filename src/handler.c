@@ -36,6 +36,7 @@ bool handle_input(char *buffer) {
         case NONE:
             goto END;
         case DONE:
+            operation_done();
             return false;
         case HELP:
             operation_print_help();

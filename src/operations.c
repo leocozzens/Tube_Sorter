@@ -6,6 +6,7 @@
 // Local headers
 #include <commands.h>
 #define BUFF_SIZE 256
+#define DONE_STR "Exiting program..."
 
 #define STRINGIZE(arg) #arg
 #define X(command, desc, usage) printf("\n" STRINGIZE(command:) " "desc"\nUSAGE - " usage "\n", STRINGIZE(command));
@@ -16,6 +17,11 @@ void operation_print_help(void) {
 }
 
 #undef X
+
+void operation_done(void) {
+    printf("%s\n", DONE_STR);
+}
+
 void operation_find(char *buffer) {    
     FILE *inFile = fopen("tubenumbers_box3replated.txt", "r");
     char inBuffer[BUFF_SIZE];
