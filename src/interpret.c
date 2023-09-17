@@ -19,12 +19,20 @@ static void str_to_upper(char *in, char *out, int strLen) {
     for(int i = 0; i < strLen; i++) out[i] = toupper(in[i]);
 }
 
-static bool verify_has_depth(int depth, char *buffer) {
+#define INCREMENT_CHECK(_param, _check, _i) if((_param) == (_check)) (_i)++
+
+static bool verify_has_depth(unsigned int depth, char *buffer) {
     unsigned int buffLen = strlen(buffer);
+    unsigned int lists = 0;
     unsigned int i = 0;
-    unsigned int args = 0;
-    while(args < depth && i < buffLen) {
-        if(buffer[i++] == ' ') args++;
+    while(lists < depth && i < buffLen) {
+        if(lists == 0) {
+            INCREMENT_CHECK(buffer[i], ' ', lists);
+        }
+        else {
+            INCREMENT_CHECK(buffer[i], SEPARATOR[0], lists);
+        }
+        i++;
     }
     if(buffer[i] != '\0') return false;
     return true;
@@ -36,7 +44,7 @@ static bool is_valid(CommandType type, char *buffer) {
             return false;
         case DONE:
         case HELP:
-            return verify_has_depth(0, buffer + strlen(checkList[type]));
+            return verify_has_depth(1, buffer + strlen(checkList[type]));
         case FIND:
             break;
         case COMPARE:
